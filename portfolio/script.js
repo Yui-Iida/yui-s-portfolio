@@ -100,7 +100,8 @@ imgTargets.forEach(img => imgObserver.observe(img));
 // const observer = new IntersectionObserver(obsCallback, obsOptions);
 // observer.observe(intro);
 
-//
+// Sticky Navigation
+
 const nav = document.querySelector('.nav');
 const header = document.querySelector('.section-header');
 
@@ -142,3 +143,50 @@ for (let i = 0; i < smoothScrollTrigger.length; i++) {
     });
   });
 }
+
+// navigation bar
+
+document
+  .querySelector('.icon-mobile-open')
+  .addEventListener('click', function () {
+    console.log('.btn-mobile-nav');
+    document.querySelector('.mobile-menu').classList.toggle('is-active');
+    document.querySelector('.icon-mobile-open').classList.toggle('is-active');
+    document.querySelector('.icon-mobile-close').classList.add('is-active');
+  });
+
+document.querySelector('a[href^="#"]').addEventListener('click', function () {
+  document.querySelector('.mobile-menu').classList.remove('is-active');
+});
+
+// header
+AOS.init();
+
+// scroll color
+
+const scrollColor = window.addEventListener('scroll', function () {
+  let scroll = window.pageYOffset;
+  let isSp = this.document.height >= 7500;
+
+  // if (!isSp && scroll > 1000 && scroll < 6000) {
+  //   document.body.style.backgroundColor = '#fff';
+  // } else if (isSp && scroll > 1000 && scroll < 100000) {
+  //   document.body.style.backgroundColor = '#fff';
+  // } else {
+  //   document.body.style.backgroundColor = '#333';
+  // }
+
+  if (!isSp) {
+    if (scroll > 1000 && scroll < 9600) {
+      document.body.style.backgroundColor = '#fff';
+    } else {
+      document.body.style.backgroundColor = '#333';
+    }
+  } else {
+    if (scroll > 1000 && scroll < 100000) {
+      document.body.style.backgroundColor = '#fff';
+    } else {
+      document.body.style.backgroundColor = '#333';
+    }
+  }
+});
